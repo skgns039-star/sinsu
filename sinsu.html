@@ -2422,12 +2422,21 @@
       .video-autoplay-label{right:18px;}
       .play-dot,.autoplay-pulse{width:7px;height:7px;box-shadow:0 0 0 5px rgba(141,146,255,.12);}
     }
-    /* Compact phone (≤480px): refine phone-image rotation/offset + stack video labels */
+    /* Compact phone (≤480px): refine phone-image rotation/offset + center-stack video labels */
     @media(max-width:480px){
       .home-device-preview .device-cluster{gap:14px;}
       #feature-preview .app-screenshot-frame img{padding:4px;}
-      .video-play-state{left:18px;bottom:18px;font-size:10.5px;}
-      .video-autoplay-label{right:18px;bottom:44px;font-size:10.5px;}
+      .video-play-state,.video-autoplay-label{
+        left:50%;
+        right:auto;
+        transform:translateX(-50%);
+        font-size:10.5px;
+        gap:7px;
+        text-align:center;
+        white-space:nowrap;
+      }
+      .video-play-state{bottom:18px;}
+      .video-autoplay-label{bottom:44px;}
     }
     /* Tiny phone (≤380px): App Preview columns + About hero spacing */
     @media(max-width:380px){
