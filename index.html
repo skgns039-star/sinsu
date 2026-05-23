@@ -2410,18 +2410,24 @@
       #page-about .why-started-top .eyebrow,
       .beliefs-immersive .beliefs-label{font-size:10px;letter-spacing:.18em;}
     }
-    /* Phone (≤600px): About hero typography + journal image scale */
+    /* Phone (≤600px): About hero typography + journal image scale + cinematic video labels */
     @media(max-width:600px){
       #page-about > .about-hero h1{font-size:clamp(28px,7.5vw,40px);line-height:1.04;}
       #page-about > .about-hero .serif{white-space:normal;}
       #page-about .meaning-sai-accent{font-weight:480;}
       .journal-feature-media.journal-feature-media-photo{min-height:220px;}
       .journal-mini-media.journal-mini-media-photo{min-height:200px;}
+      .video-play-state,.video-autoplay-label{font-size:11px;gap:7px;bottom:22px;}
+      .video-play-state{left:18px;}
+      .video-autoplay-label{right:18px;}
+      .play-dot,.autoplay-pulse{width:7px;height:7px;box-shadow:0 0 0 5px rgba(141,146,255,.12);}
     }
-    /* Compact phone (≤480px): refine phone-image rotation/offset */
+    /* Compact phone (≤480px): refine phone-image rotation/offset + stack video labels */
     @media(max-width:480px){
       .home-device-preview .device-cluster{gap:14px;}
       #feature-preview .app-screenshot-frame img{padding:4px;}
+      .video-play-state{left:18px;bottom:18px;font-size:10.5px;}
+      .video-autoplay-label{right:18px;bottom:44px;font-size:10.5px;}
     }
     /* Tiny phone (≤380px): App Preview columns + About hero spacing */
     @media(max-width:380px){
