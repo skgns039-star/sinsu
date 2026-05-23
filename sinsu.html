@@ -82,6 +82,21 @@
     .halo{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);width:min(780px,76vw);height:min(780px,76vw);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.94) 0%,rgba(219,238,255,.64) 38%,rgba(141,146,255,.12) 58%,transparent 76%);filter:blur(2px);animation:glowPulse 7s ease-in-out infinite}
     .phone{position:relative;width:min(420px,42vw);justify-self:end;border-radius:34px;z-index:2;transition:.45s cubic-bezier(.2,.8,.2,1)}
     .phone.secondary-phone{justify-self:start;transform:rotate(3deg) translateY(36px);opacity:.98}.phone.primary-phone{transform:rotate(-3deg)}.phone:hover{transform:translateY(-10px) rotate(0deg)!important}
+    .phone.phone-image{background:transparent;border-radius:0;box-shadow:none;padding:0;min-height:0;width:min(380px,40vw)}
+    .phone.phone-image img{display:block;width:100%;height:auto;border-radius:0;filter:drop-shadow(0 30px 60px rgba(55,86,130,.18)) drop-shadow(0 12px 22px rgba(55,86,130,.10));transition:.45s cubic-bezier(.2,.8,.2,1)}
+    .phone.primary-phone.phone-image{transform:rotate(-5deg)}
+    .phone.secondary-phone.phone-image{transform:rotate(5deg) translateY(36px);opacity:1}
+    .phone.phone-image:hover img{transform:translateY(-6px)}
+    .home-device-preview .phone.phone-image{width:min(360px,38vw)}
+    @media(max-width:760px){
+      .phone.phone-image,.home-device-preview .phone.phone-image{width:min(220px,42vw)}
+      .phone.secondary-phone.phone-image{transform:rotate(5deg) translateY(22px)}
+    }
+    @media(max-width:480px){
+      .phone.phone-image,.home-device-preview .phone.phone-image{width:min(170px,44vw)}
+      .phone.primary-phone.phone-image{transform:rotate(-4deg)}
+      .phone.secondary-phone.phone-image{transform:rotate(4deg) translateY(14px)}
+    }
     .phone-screen{min-height:560px;border-radius:34px;background:linear-gradient(180deg,#fff,#f7fbff 52%,#fffdf8);border:1px solid var(--line);box-shadow:0 36px 110px rgba(55,86,130,.12);padding:24px 20px;overflow:hidden;position:relative}.phone-screen:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.56) 44%,transparent 62%);transform:translateX(-120%);animation:screenSweep 8s ease-in-out infinite;pointer-events:none}
     .mini-status{height:7px;width:80px;border-radius:999px;background:rgba(17,19,24,.1);margin:0 auto 24px}.app-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.app-top strong{font-weight:360}.tiny-avatar{width:44px;height:50px;border-radius:46% 48% 40% 42%;background:radial-gradient(circle at 54% 62%,rgba(43,142,255,.68),transparent 42%),radial-gradient(circle at 72% 68%,rgba(166,151,255,.54),transparent 38%),linear-gradient(180deg,#eef8ff,#c7d7ff);position:relative;box-shadow:inset 0 12px 30px rgba(255,255,255,.7),0 14px 30px rgba(141,146,255,.16)}.tiny-avatar:before,.tiny-avatar:after{content:"";position:absolute;top:20px;width:4px;height:8px;border-radius:99px;background:#111}.tiny-avatar:before{left:16px}.tiny-avatar:after{right:16px}
     .app-card{border-radius:26px;background:rgba(255,255,255,.68);border:1px solid rgba(141,146,255,.16);box-shadow:var(--soft-shadow);padding:20px;margin-top:14px;transition:.35s ease}.skin-score{display:flex;align-items:center;gap:18px}.score-ring{width:96px;height:96px;border-radius:50%;background:conic-gradient(var(--accent) 0 78%,rgba(141,146,255,.16) 78%);display:grid;place-items:center}.score-ring span{width:72px;height:72px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:26px;font-weight:330}.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.chip,.context-item,.mock-row{padding:9px 12px;border-radius:999px;background:rgba(247,250,255,.78);border:1px solid rgba(141,146,255,.16);font-size:12px;color:var(--soft)}.routine-card{background:linear-gradient(145deg,rgba(240,241,255,.92),rgba(246,250,255,.9))}.routine-card h3{margin-top:10px;font-size:28px}.product-line{display:flex;justify-content:space-between;margin-top:12px;padding:13px 14px;border-radius:18px;background:rgba(255,255,255,.74);font-size:13px;color:var(--soft)}.context-list{display:grid;gap:10px;margin-top:16px}.context-item{display:flex;justify-content:space-between;border-radius:18px}.context-item span:last-child{color:var(--accent)}
@@ -349,11 +364,11 @@
       align-items:center;
       justify-content:center;
       gap:10px;
-      color:rgba(17,19,24,.62);
+      color:var(--accent);
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
-      font-weight:340;
+      font-weight:360;
       margin:0 auto 52px;
     }
     .beliefs-immersive .beliefs-label:before{
@@ -361,8 +376,8 @@
       width:6px;
       height:6px;
       border-radius:50%;
-      background:rgba(17,19,24,.62);
-      box-shadow:0 0 0 7px rgba(255,255,255,.16);
+      background:var(--accent);
+      box-shadow:0 0 0 7px rgba(141,146,255,.14);
     }
     .beliefs-layout{
       position:relative;
@@ -757,6 +772,41 @@
       background:rgba(255,255,255,.82);
       z-index:3;
     }
+    /* Journal — real photo thumbnails */
+    .journal-feature-media.journal-feature-media-photo{
+      background:#eef2f5;
+    }
+    .journal-feature-media.journal-feature-media-photo:before{display:none;}
+    .journal-feature-media.journal-feature-media-photo img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+    }
+    .journal-mini-media.journal-mini-media-photo{
+      background:#eef2f5;
+    }
+    .journal-mini-media.journal-mini-media-photo:before{
+      background:linear-gradient(180deg,rgba(255,255,255,0) 55%,rgba(255,255,255,.78));
+    }
+    .journal-mini-media.journal-mini-media-photo:after{display:none;}
+    .journal-mini-media.journal-mini-media-photo img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      z-index:1;
+    }
+    .journal-mini-media.journal-mini-media-photo .journal-category{
+      z-index:4;
+    }
+
     .journal-mini-copy{
       padding:24px 14px 16px;
       text-align:left;
@@ -1186,6 +1236,53 @@
     }
 
 
+    /* About — App Preview centered chip heading */
+    #page-about .app-preview-editorial .app-preview-heading{
+      width:min(1180px,calc(100% - 48px));
+      margin:0 auto 40px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+    #page-about .app-preview-editorial .app-preview-heading .eyebrow{
+      margin-bottom:0;
+    }
+    @media(max-width:760px){
+      #page-about .app-preview-editorial .app-preview-heading{
+        width:calc(100% - 32px);
+        margin-bottom:28px;
+      }
+    }
+
+    /* About — hero one-line layout + tightened spacing to next section */
+    #page-about > .about-hero{
+      padding-top:96px;
+      padding-bottom:40px;
+    }
+    #page-about > .about-hero h1{
+      max-width:none;
+      text-wrap:balance;
+    }
+    #page-about > .about-hero .about-hero-line{
+      display:block;
+    }
+    #page-about > .about-hero .serif{
+      white-space:nowrap;
+    }
+    #page-about .meaning-shell{
+      padding-top:54px;
+    }
+    .meaning-sai-accent{
+      color:var(--accent);
+      font-weight:430;
+    }
+    @media(max-width:760px){
+      #page-about > .about-hero{padding-top:72px;padding-bottom:28px;}
+      #page-about > .about-hero .serif{white-space:normal;}
+      #page-about .meaning-shell{padding-top:36px;}
+    }
+
     /* About — Why SAI Started — service column layout */
     #page-about .why-started-editorial{
       width:100%;
@@ -1204,11 +1301,11 @@
     }
     #page-about .why-started-top .eyebrow{
       margin-bottom:0;
-      color:rgba(17,19,24,.68);
+      color:var(--accent);
     }
     #page-about .why-started-top .eyebrow:before{
-      background:rgba(17,19,24,.58);
-      box-shadow:0 0 0 7px rgba(17,19,24,.05);
+      background:var(--accent);
+      box-shadow:0 0 0 7px rgba(141,146,255,.12);
     }
     #page-about .why-card-stage{
       width:min(1180px,calc(100% - 48px));
@@ -2151,6 +2248,13 @@
       letter-spacing:.16em;
       font-weight:340;
     }
+    #feature-preview .app-screenshot-frame img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+    }
     #feature-preview .app-preview-caption{
       margin-top:12px;
       padding:0;
@@ -2321,8 +2425,8 @@
       <section class="home-device-preview" id="app-preview">
         <div class="device-cluster reveal">
           <div class="halo"></div>
-          <div class="phone primary-phone"><div class="phone-screen"><div class="mini-status"></div><div class="app-top"><strong>Today in SAI</strong><div class="tiny-avatar"></div></div><div class="app-card skin-score"><div class="score-ring"><span>78</span></div><div><h3>Skin Health</h3><p>Good rhythm today</p><div class="chip-row"><span class="chip">Updated today</span><span class="chip">Protection focus</span></div></div></div><div class="app-card routine-card"><small>Today’s focus</small><h3>Protect</h3><p>Use your existing products to support barrier care and UV protection.</p><div class="product-line"><span>Vitamin C serum</span><span>›</span></div><div class="product-line"><span>Sunscreen</span><span>›</span></div></div></div></div>
-          <div class="phone secondary-phone"><div class="phone-screen"><div class="mini-status"></div><div class="app-top"><strong>Skin Context</strong><div class="tiny-avatar"></div></div><div class="app-card"><h3>Today’s signals</h3><div class="context-list"><div class="context-item"><span>Sleep</span><span>6h 20m</span></div><div class="context-item"><span>UV</span><span>High</span></div><div class="context-item"><span>Humidity</span><span>Low</span></div><div class="context-item"><span>Activity</span><span>Outdoor</span></div></div></div></div></div>
+          <div class="phone primary-phone phone-image"><img src="https://cdn.imweb.me/thumbnail/20260524/9908984f67349.png" alt="SAI app — Your beauty-wellness routine assistant" loading="lazy"></div>
+          <div class="phone secondary-phone phone-image"><img src="https://cdn.imweb.me/thumbnail/20260524/254f319f4fc71.png" alt="SAI app — You're all done!" loading="lazy"></div>
         </div>
       </section>
       <section class="brand-manifesto reveal"><div><div class="manifesto-kicker">Self-care Assistant Interface</div><h2>SAI turns <span>daily context</span> into gentle skincare guidance, so your routine can feel clearer, softer, and more connected.</h2><p>Built between wellness signals, environmental changes, the products you own, and the way your skin feels today.</p></div></section>
@@ -2331,12 +2435,12 @@
     </div>
 
     <div class="site-page" id="page-about">
-      <section class="hero"><div class="hero-copy reveal"><div class="eyebrow">About SAI</div><h1>What if your skincare routine could <span class="serif">understand your day?</span></h1></div></section>
+      <section class="hero about-hero"><div class="hero-copy reveal"><div class="eyebrow">About SAI</div><h1><span class="about-hero-line">What if your skincare routine</span><span class="about-hero-line">could <span class="serif">understand your day?</span></span></h1></div></section>
       <section id="meaning" class="meaning-editorial reveal">
         <div class="meaning-shell">
           <div class="meaning-heading">Meaning of SAI</div>
           <div class="meaning-hero-copy reveal">
-            <h2><span class="line">SAI is inspired by the Korean word</span><span class="line">“사이/saɪ/”, meaning “between”.</span></h2>
+            <h2><span class="line"><span class="meaning-sai-accent">SAI</span> is inspired by the Korean word</span><span class="line">“사이/saɪ/”, meaning “between”.</span></h2>
           </div>
           <div class="meaning-top-visuals">
             <div class="meaning-image-stage">
@@ -2418,10 +2522,10 @@
             <div class="why-card-meta"><span>03</span><span>Shift</span></div>
             <div class="why-card-visual visual-shift" aria-hidden="true">
               <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 82L48 66V48L20 64V82Z" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M48 66L72 80L100 64L76 50L48 66Z" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M48 48H86V24H42V38H68L32 74" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M86 24V88H58" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="26" cy="60" r="10" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="94" cy="60" r="10" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M38 60H82" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M72 50L84 60L72 70" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <h3>Shift</h3>
@@ -2461,7 +2565,7 @@
           </div>
         </div>
       </section>
-      <section id="feature-preview" class="app-preview-editorial"><div class="app-preview-row"><article class="app-preview-item reveal"><div class="app-screenshot-frame"><span>APP SCREENSHOT</span></div><div class="app-preview-caption"><span class="app-preview-index">01</span><h3><strong>Reads</strong> your daily context</h3></div></article><article class="app-preview-item reveal"><div class="app-screenshot-frame"><span>APP SCREENSHOT</span></div><div class="app-preview-caption"><span class="app-preview-index">02</span><h3><strong>Connects</strong> what you already own</h3></div></article><article class="app-preview-item reveal"><div class="app-screenshot-frame"><span>APP SCREENSHOT</span></div><div class="app-preview-caption"><span class="app-preview-index">03</span><h3><strong>Guides</strong> your daily routine</h3></div></article><article class="app-preview-item reveal"><div class="app-screenshot-frame"><span>APP SCREENSHOT</span></div><div class="app-preview-caption"><span class="app-preview-index">04</span><h3><strong>Helps</strong> your care build over time</h3></div></article></div></section><section class="cta"><span class="cta-kicker">Download SAI</span><h2>Ready to let your routine respond to your day?</h2><p>Start with SAI and connect your daily context to the care you already own.</p><div class="cta-actions"><a class="btn primary" href="#download">App Store</a><a class="btn secondary" href="#download">Google Play</a></div></section>
+      <section id="feature-preview" class="app-preview-editorial"><div class="app-preview-heading reveal"><div class="eyebrow">App Preview</div></div><div class="app-preview-row"><article class="app-preview-item reveal"><div class="app-screenshot-frame"><img src="https://cdn.imweb.me/thumbnail/20260524/ccd1b21f10fa6.png" alt="Reads your daily context" loading="lazy"></div><div class="app-preview-caption"><span class="app-preview-index">01</span><h3><strong>Reads</strong> your daily context</h3></div></article><article class="app-preview-item reveal"><div class="app-screenshot-frame"><img src="https://cdn.imweb.me/thumbnail/20260524/fb35e4a3e1675.png" alt="Connects what you already own" loading="lazy"></div><div class="app-preview-caption"><span class="app-preview-index">02</span><h3><strong>Connects</strong> what you already own</h3></div></article><article class="app-preview-item reveal"><div class="app-screenshot-frame"><img src="https://cdn.imweb.me/thumbnail/20260524/7a551a9152cef.png" alt="Guides your daily routine" loading="lazy"></div><div class="app-preview-caption"><span class="app-preview-index">03</span><h3><strong>Guides</strong> your daily routine</h3></div></article><article class="app-preview-item reveal"><div class="app-screenshot-frame"><img src="https://cdn.imweb.me/thumbnail/20260524/cf69a4b260bed.png" alt="Helps your care build over time" loading="lazy"></div><div class="app-preview-caption"><span class="app-preview-index">04</span><h3><strong>Helps</strong> your care build over time</h3></div></article></div></section><section class="cta"><span class="cta-kicker">Download SAI</span><h2>Ready to let your routine respond to your day?</h2><p>Start with SAI and connect your daily context to the care you already own.</p><div class="cta-actions"><a class="btn primary" href="#download">App Store</a><a class="btn secondary" href="#download">Google Play</a></div></section>
     </div>
 
     
@@ -2541,7 +2645,7 @@
     </div>
 
 
-    <div class="site-page" id="page-journal"><div id="journal-list"><section class="journal-editorial-hero reveal"><span class="journal-pill-label">Journal</span><h1>A brand editorial space where SAI explores how daily context influences the care choices we make</h1><div class="journal-keywords" aria-label="Journal keyword filters"><button class="journal-keyword active">All</button><button class="journal-keyword">Skin Context</button><button class="journal-keyword">Ingredients</button><button class="journal-keyword">Devices</button><button class="journal-keyword">Routine</button><button class="journal-keyword">SAI Updates</button></div></section><section class="journal-editorial-list"><article class="journal-feature-card reveal" onclick="openArticle()"><div class="journal-feature-media" aria-label="Featured article image placeholder"></div><div class="journal-feature-copy"><div><span class="journal-category">Routine Intelligence</span><h2>Why More Products Make Care Feel Less Clear</h2><p>A short note on choice, routine fatigue, and using what you already own with more intention.</p></div><div class="journal-card-bottom"><span class="journal-readtime">3 min read</span><span class="journal-byline">by SAI</span></div></div></article><div class="journal-card-grid"><article class="journal-mini-card reveal"><div class="journal-mini-media skin"><span class="journal-category">Skin Context</span></div><div class="journal-mini-copy"><h3>What High UV Days Mean for Your Routine</h3><p>A short note on protection-focused care when UV exposure and outdoor activity increase.</p></div></article><article class="journal-mini-card reveal"><div class="journal-mini-media device"><span class="journal-category">Devices</span></div><div class="journal-mini-copy"><h3>When Should Your Beauty Device Rest?</h3><p>A guide to device rest days when skin feels sensitive, tired, or overstimulated.</p></div></article><article class="journal-mini-card reveal"><div class="journal-mini-media hands"><span class="journal-category">Ingredients</span></div><div class="journal-mini-copy"><h3>Vitamin C and Daily Protection</h3><p>How antioxidant ingredients can support a protection-focused daily routine.</p></div></article></div></section><section class="cta"><span class="cta-kicker">Download SAI</span><h2>Ready to let your routine respond to your day?</h2><p>Start with SAI and connect your daily context to the care you already own.</p><div class="cta-actions"><a class="btn primary" href="#download">App Store</a><a class="btn secondary" href="#download">Google Play</a></div></section></div><div class="article-detail" id="journal-article"><section class="article-body"><div class="article-meta"><span>Routine Intelligence</span><span>May 2026</span><span>3 min read</span></div><h1>Why More Products Make Care Feel Less Clear</h1><p>Most of us do not lack products. But having more does not always make the next step clearer.</p><div class="article-image">Image placeholder</div><p>Care does not always have to be more. It can be more connected.</p><div class="sai-note"><h3>How this works in SAI</h3><p>You register the products and devices you already own. Then SAI uses your daily context to suggest a care focus for the day.</p></div><div class="cta-actions" style="justify-content:flex-start"><a class="btn primary" href="#download">Experience SAI</a><button class="btn secondary" onclick="closeArticle()">Read more notes</button></div></section></div></div>
+    <div class="site-page" id="page-journal"><div id="journal-list"><section class="journal-editorial-hero reveal"><span class="journal-pill-label">Journal</span><h1>A brand editorial space where SAI explores how daily context influences the care choices we make</h1><div class="journal-keywords" aria-label="Journal keyword filters"><button class="journal-keyword active">All</button><button class="journal-keyword">Skin Context</button><button class="journal-keyword">Ingredients</button><button class="journal-keyword">Devices</button><button class="journal-keyword">Routine</button><button class="journal-keyword">SAI Updates</button></div></section><section class="journal-editorial-list"><article class="journal-feature-card reveal" onclick="openArticle()"><div class="journal-feature-media journal-feature-media-photo" aria-label="Featured article image"><img src="https://cdn.imweb.me/thumbnail/20260524/a8b4620da3b18.png" alt="Why More Products Make Care Feel Less Clear" loading="lazy"></div><div class="journal-feature-copy"><div><span class="journal-category">Routine Intelligence</span><h2>Why More Products Make Care Feel Less Clear</h2><p>A short note on choice, routine fatigue, and using what you already own with more intention.</p></div><div class="journal-card-bottom"><span class="journal-readtime">3 min read</span><span class="journal-byline">by SAI</span></div></div></article><div class="journal-card-grid"><article class="journal-mini-card reveal"><div class="journal-mini-media skin journal-mini-media-photo"><img src="https://cdn.imweb.me/thumbnail/20260524/49b2fd2ff7299.png" alt="What High UV Days Mean for Your Routine" loading="lazy"><span class="journal-category">Skin Context</span></div><div class="journal-mini-copy"><h3>What High UV Days Mean for Your Routine</h3><p>A short note on protection-focused care when UV exposure and outdoor activity increase.</p></div></article><article class="journal-mini-card reveal"><div class="journal-mini-media device journal-mini-media-photo"><img src="https://cdn.imweb.me/thumbnail/20260524/677e6c8c33b5d.png" alt="When Should Your Beauty Device Rest?" loading="lazy"><span class="journal-category">Devices</span></div><div class="journal-mini-copy"><h3>When Should Your Beauty Device Rest?</h3><p>A guide to device rest days when skin feels sensitive, tired, or overstimulated.</p></div></article><article class="journal-mini-card reveal"><div class="journal-mini-media hands journal-mini-media-photo"><img src="https://cdn.imweb.me/thumbnail/20260524/2f15d10220115.png" alt="Vitamin C and Daily Protection" loading="lazy"><span class="journal-category">Ingredients</span></div><div class="journal-mini-copy"><h3>Vitamin C and Daily Protection</h3><p>How antioxidant ingredients can support a protection-focused daily routine.</p></div></article></div></section><section class="cta"><span class="cta-kicker">Download SAI</span><h2>Ready to let your routine respond to your day?</h2><p>Start with SAI and connect your daily context to the care you already own.</p><div class="cta-actions"><a class="btn primary" href="#download">App Store</a><a class="btn secondary" href="#download">Google Play</a></div></section></div><div class="article-detail" id="journal-article"><section class="article-body"><div class="article-meta"><span>Routine Intelligence</span><span>May 2026</span><span>3 min read</span></div><h1>Why More Products Make Care Feel Less Clear</h1><p>Most of us do not lack products. But having more does not always make the next step clearer.</p><div class="article-image">Image placeholder</div><p>Care does not always have to be more. It can be more connected.</p><div class="sai-note"><h3>How this works in SAI</h3><p>You register the products and devices you already own. Then SAI uses your daily context to suggest a care focus for the day.</p></div><div class="cta-actions" style="justify-content:flex-start"><a class="btn primary" href="#download">Experience SAI</a><button class="btn secondary" onclick="closeArticle()">Read more notes</button></div></section></div></div>
   </main>
 
   <footer class="closing-footer"><div class="footer-layout"><div class="footer-brand-block"><div class="footer-sai">SAI</div><div class="footer-brand-info"><p class="footer-support-label">Customer care &amp; support</p><a class="footer-phone" href="tel:1688-9407">1688-9407</a><div class="footer-hours"><p>Weekdays · 10:00 – 18:00</p><p>Lunch break · 12:30 – 14:00</p></div></div></div><div class="footer-col"><h3>Brand</h3><a class="nav-link" data-page="about" href="#about">About SAI</a><a class="nav-link" data-page="plans" href="#plans">Plans</a><a class="nav-link" data-page="journal" href="#journal">Journal</a><a href="#download">Download SAI</a></div><div class="footer-col"><h3>Legal</h3><a href="#">Privacy &amp; Data Policy</a><a href="#">Terms of Service</a><a href="#">FAQ</a><a href="#">Newsletter</a></div><div class="footer-col"><h3>Contact</h3><span class="footer-text">SAI Labs</span><a href="mailto:hello@sai.app">hello@sai.app</a><a href="https://instagram.com/sai.app" target="_blank" rel="noreferrer">Instagram · @sai.app</a><span class="footer-text">Paris / Seoul</span></div></div></footer>
