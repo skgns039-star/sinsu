@@ -1268,6 +1268,7 @@
     }
     #page-about > .about-hero .about-hero-line{
       display:block;
+      white-space:nowrap;
     }
     #page-about > .about-hero .serif{
       white-space:nowrap;
@@ -1281,6 +1282,7 @@
     }
     @media(max-width:760px){
       #page-about > .about-hero{padding-top:72px;padding-bottom:28px;}
+      #page-about > .about-hero .about-hero-line{white-space:normal;}
       #page-about > .about-hero .serif{white-space:normal;}
       #page-about .meaning-shell{padding-top:36px;}
     }
@@ -2417,6 +2419,7 @@
     /* Phone (≤600px): About hero typography + journal image scale + cinematic video labels */
     @media(max-width:600px){
       #page-about > .about-hero h1{font-size:clamp(28px,7.5vw,40px);line-height:1.04;}
+      #page-about > .about-hero .about-hero-line{white-space:normal;}
       #page-about > .about-hero .serif{white-space:normal;}
       #page-about .meaning-sai-accent{font-weight:480;}
       .journal-feature-media.journal-feature-media-photo{min-height:220px;}
@@ -2463,26 +2466,35 @@
       .phone.phone-image:hover img{transform:none!important;}
     }
 
-    /* v48 — App Preview: uniform frame + grid hover effect */
+    /* v49 — App Preview: phone bbox normalization for true uniform size */
     #feature-preview .app-screenshot-frame{
+      position:relative!important;
+      width:100%!important;
       height:auto!important;
-      aspect-ratio:640/1200;
-      display:flex!important;
-      align-items:center!important;
-      justify-content:center!important;
+      aspect-ratio:540/1100!important;
+      overflow:hidden!important;
+      display:block!important;
       background:transparent!important;
       border:0!important;
       padding:0!important;
     }
     #feature-preview .app-screenshot-frame img{
-      width:auto!important;
-      height:100%!important;
-      max-width:100%;
-      object-fit:contain!important;
-      object-position:center!important;
+      position:absolute!important;
+      top:var(--ph-top,0)!important;
+      left:var(--ph-left,0)!important;
+      width:var(--ph-width,100%)!important;
+      height:auto!important;
+      max-width:none!important;
+      object-fit:initial!important;
+      object-position:initial!important;
       padding:0!important;
+      transform-origin:center center;
       transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .55s ease;
     }
+    #feature-preview .app-preview-item:nth-child(1) .app-screenshot-frame{--ph-top:-4.63%;--ph-left:-10.19%;--ph-width:120.75%;}
+    #feature-preview .app-preview-item:nth-child(2) .app-screenshot-frame{--ph-top:-5.06%;--ph-left:-14.68%;--ph-width:126.98%;}
+    #feature-preview .app-preview-item:nth-child(3) .app-screenshot-frame{--ph-top:-3.19%;--ph-left:-7.94%;--ph-width:115.52%;}
+    #feature-preview .app-preview-item:nth-child(4) .app-screenshot-frame{--ph-top:-2.36%;--ph-left:-6.30%;--ph-width:118.52%;}
     #feature-preview .app-preview-item{
       cursor:pointer;
       transition:transform .55s cubic-bezier(.2,.8,.2,1);
