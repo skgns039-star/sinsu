@@ -2902,11 +2902,12 @@
     }
     .wellness-card-line {
       margin: 58px 0 0;
-      font-size: clamp(28px, 3.4vw, 46px);
-      line-height: 1.04; letter-spacing: -.05em;
+      font-size: clamp(24px, 2.8vw, 40px);
+      line-height: 1.06; letter-spacing: -.045em;
       font-weight: 340; color: #111318;
     }
     .wellness-card-line span { display: block; color: var(--accent); white-space: nowrap; }
+    .wellness-card-line span.wcl-bottom { color: #111318; }
     .wellness-card-support {
       max-width: 480px; margin: 24px 0 0;
       color: rgba(17,19,24,.58); font-size: 15px;
@@ -3016,15 +3017,14 @@
           <div class="phone secondary-phone phone-image"><img src="https://cdn.imweb.me/thumbnail/20260524/254f319f4fc71.png" alt="SAI app — You're all done!" loading="lazy"></div>
         </div>
       </section>
-      <section class="brand-manifesto reveal"><div><div class="manifesto-kicker">Self-care Assistant Interface</div><h2>SAI turns <span>daily context</span> into gentle skincare guidance, so your routine can feel clearer, softer, and more connected.</h2><p>Built between wellness signals, environmental changes, the products you own, and the way your skin feels today.</p></div></section>
+      <section class="brand-manifesto reveal"><div><div class="manifesto-kicker">Self-care Assistant Interface</div><h2>SAI turns <span>daily context</span> into gentle skincare guidance, so your routine can feel clearer, softer, and more connected.</h2><p>Built between wellness signals, environmental changes,<br>the products you own, and the way your skin feels today.</p></div></section>
       <section id="video" class="wellness-card-section">
   <div class="wellness-card-shell">
     <div class="wellness-card-intro reveal">
       <div class="wellness-kicker">SAI PHILOSOPHY</div>
       <h2>Care that feels lighter, clearer, and easier to keep.</h2>
       <p>
-        SAI reframes skincare as a calm daily rhythm; not adding more, but
-        helping each choice feel more intentional.
+        SAI reframes skincare as a calm daily rhythm; not adding more,<br>but helping each choice feel more intentional.
       </p>
     </div>
 
@@ -3036,7 +3036,7 @@
         </div>
         <h3 class="wellness-card-line">
           <span>Not more product,</span>
-          Better use.
+          <span class="wcl-bottom">Better use.</span>
         </h3>
         <p class="wellness-card-support">
           SAI helps you understand what to reach for today, using the products
@@ -3051,7 +3051,7 @@
         </div>
         <h3 class="wellness-card-line">
           <span>Not pressure,</span>
-          gentle consistency.
+          <span class="wcl-bottom">gentle consistency.</span>
         </h3>
         <p class="wellness-card-support">
           A softer routine rhythm that supports daily care without making
@@ -3066,7 +3066,7 @@
         </div>
         <h3 class="wellness-card-line">
           <span>Not diagnosis,</span>
-          contextual guidance.
+          <span class="wcl-bottom">contextual guidance.</span>
         </h3>
         <p class="wellness-card-support">
           SAI connects signals like weather, activity, and skin feel into
