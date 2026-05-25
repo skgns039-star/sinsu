@@ -2827,23 +2827,26 @@
     .wellness-text-card {
       min-height: 270px;
       padding: 34px 34px 30px;
-      border-radius: 34px;
+      border-radius: 24px;
       position: relative; overflow: hidden;
-      background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(246,250,255,.72));
-      border: 1px solid rgba(141,146,255,.16);
-      box-shadow: 0 26px 76px rgba(55,86,130,.10);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      opacity: 0;
-      transform: translateY(46px) scale(.985);
-      transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+      /* Match section background tone — light blue/lavender uniform */
+      background: rgba(231,239,250,0.62);
+      border: 1px solid rgba(141,146,255,0.14);
+      box-shadow: 0 8px 28px rgba(55,86,130,0.06);
+      /* GPU hints for smoother hover/animation */
+      will-change: transform, box-shadow;
+      transform: translateZ(0);
+      transition: transform .55s cubic-bezier(.2,.8,.2,1),
+                  box-shadow .45s ease,
+                  border-color .35s ease,
+                  background .45s ease;
     }
     .wellness-text-card::before {
-      content: ""; position: absolute; inset: -1px;
-      background:
-        radial-gradient(circle at 88% 12%, rgba(141,146,255,.18), transparent 30%),
-        radial-gradient(circle at 10% 90%, rgba(219,238,255,.70), transparent 36%);
-      opacity: .9; pointer-events: none;
+      content: ""; position: absolute; inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, transparent 55%);
+      opacity: 0; pointer-events: none;
+      transition: opacity .45s ease;
     }
     .wellness-text-card > * { position: relative; z-index: 1; }
     /* Remove decorative half-circles / circles from all section backgrounds */
@@ -2881,9 +2884,17 @@
     .wellness-text-card.is-visible,
     .wellness-card-intro.is-visible { opacity: 1; transform: translateY(0) scale(1); }
     .wellness-text-card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 34px 96px rgba(55,86,130,.14);
+      transform: translateY(-10px);
+      box-shadow: 0 28px 64px rgba(55,86,130,0.16), 0 0 0 1px rgba(141,146,255,0.32);
+      border-color: rgba(141,146,255,0.32);
+      background: rgba(238,244,253,0.78);
     }
+    .wellness-text-card:hover::before { opacity: 1; }
+    .wellness-text-card:hover .wellness-card-line span { letter-spacing: -.045em; }
+    .wellness-text-card .wellness-card-line,
+    .wellness-text-card .wellness-card-line span,
+    .wellness-text-card .wellness-card-support,
+    .wellness-text-card .wellness-card-meta { transition: color .35s ease, letter-spacing .45s ease; }
     .wellness-card-meta {
       display: flex; justify-content: space-between; gap: 16px;
       color: rgba(17,19,24,.42); font-size: 11px;
@@ -2901,13 +2912,20 @@
       color: rgba(17,19,24,.58); font-size: 15px;
       line-height: 1.58; font-weight: 280;
     }
-    .wellness-text-card:nth-child(2) {
-      margin-left: 0;
-      background: linear-gradient(145deg, rgba(255,253,246,.84), rgba(247,251,255,.70));
+    .wellness-text-card:nth-child(2) { margin-left: 0; background: rgba(231,239,250,0.62); }
+    .wellness-text-card:nth-child(3) { margin-left: 0; background: rgba(231,239,250,0.62); }
+    /* Continuous subtle breathing animation — seamless infinite loop */
+    @keyframes wellnessCardBreath {
+      0%, 100% { box-shadow: 0 8px 28px rgba(55,86,130,0.06); }
+      50%      { box-shadow: 0 12px 36px rgba(55,86,130,0.10); }
     }
-    .wellness-text-card:nth-child(3) {
-      margin-left: 0;
-      background: linear-gradient(145deg, rgba(246,250,255,.84), rgba(255,255,255,.72));
+    .wellness-text-card { animation: wellnessCardIn .8s cubic-bezier(.16,1,.3,1) both, wellnessCardBreath 5s ease-in-out infinite 1s; }
+    .wellness-text-card:nth-child(2) { animation-delay: .14s, 1.5s; }
+    .wellness-text-card:nth-child(3) { animation-delay: .28s, 2s; }
+    .wellness-text-card:hover { animation-play-state: paused, paused; }
+    @media (prefers-reduced-motion: reduce) {
+      .wellness-text-card, .wellness-card-intro { animation: none !important; }
+      .wellness-text-card:hover { transform: none !important; }
     }
     /* Tablet (≤1180px) — narrower gap, smaller min-height */
     @media (max-width: 1180px) {
